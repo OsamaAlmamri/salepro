@@ -28,6 +28,9 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot()
     {
+
+        if(!isset($_COOKIE["language"]))
+            setcookie('language', 'ar', time() + (86400 * 365), "/");
         Schema::defaultStringLength(191);
     }
 }

@@ -28,7 +28,7 @@
     <!-- Drip icon font-->
     <link rel="preload" href="<?php echo asset('vendor/dripicons/webfont.css') ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link href="<?php echo asset('vendor/dripicons/webfont.css') ?>" rel="stylesheet"></noscript>
-    
+
     <!-- jQuery Circle-->
     <link rel="preload" href="<?php echo asset('css/grasp_mobile_progress_circle-1.0.0.min.css') ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link href="<?php echo asset('css/grasp_mobile_progress_circle-1.0.0.min.css') ?>" rel="stylesheet"></noscript>
@@ -85,7 +85,7 @@
     <!-- Drip icon font-->
     <link rel="preload" href="<?php echo asset('../../vendor/dripicons/webfont.css') ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link href="<?php echo asset('../../vendor/dripicons/webfont.css') ?>" rel="stylesheet"></noscript>
-    
+
     <!-- jQuery Circle-->
     <link rel="preload" href="<?php echo asset('../../css/grasp_mobile_progress_circle-1.0.0.min.css') ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link href="<?php echo asset('../../css/grasp_mobile_progress_circle-1.0.0.min.css') ?>" rel="stylesheet"></noscript>
@@ -141,35 +141,35 @@
                     ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                     ->where([
                         ['permissions.name', 'category'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                     ])->first();
 
                 $index_permission_active = DB::table('permissions')
                     ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                     ->where([
                         ['permissions.name', 'products-index'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                     ])->first();
 
                 $print_barcode_active = DB::table('permissions')
                     ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                     ->where([
                         ['permissions.name', 'print_barcode'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                     ])->first();
 
                 $stock_count_active = DB::table('permissions')
                     ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                     ->where([
                         ['permissions.name', 'stock_count'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                     ])->first();
 
                 $adjustment_active = DB::table('permissions')
                     ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                     ->where([
                         ['permissions.name', 'adjustment'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                     ])->first();
             ?>
             @if($category_permission_active || $index_permission_active || $print_barcode_active || $stock_count_active || $adjustment_active)
@@ -185,7 +185,7 @@
                         ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                         ->where([
                             ['permissions.name', 'products-add'],
-                            ['role_id', $role->id] 
+                            ['role_id', $role->id]
                         ])->first();
                 ?>
                 @if($add_permission_active)
@@ -210,7 +210,7 @@
                     ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                     ->where([
                         ['permissions.name', 'purchases-index'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                     ])->first();
             ?>
             @if($index_permission_active)
@@ -222,7 +222,7 @@
                         ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                         ->where([
                             ['permissions.name', 'purchases-add'],
-                            ['role_id', $role->id] 
+                            ['role_id', $role->id]
                         ])->first();
                 ?>
                 @if($add_permission_active)
@@ -237,7 +237,7 @@
                     ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                     ->where([
                         ['permissions.name', 'sales-index'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                     ])->first();
 
                 $gift_card_permission_active = DB::table('permissions')
@@ -258,14 +258,14 @@
                     ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                     ->where([
                         ['permissions.name', 'delivery'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                     ])->first();
 
                 $sale_add_permission_active = DB::table('permissions')
                     ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                     ->where([
                         ['permissions.name', 'sales-add'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                     ])->first();
             ?>
             @if($sale_index_permission_active || $gift_card_permission_active || $coupon_permission_active || $delivery_permission_active)
@@ -274,7 +274,7 @@
                 @if($sale_index_permission_active)
                 <li id="sale-list-menu"><a href="{{route('sales.index')}}">{{trans('file.Sale List')}}</a></li>
                 @if($sale_add_permission_active)
-                <li><a href="{{route('sale.pos')}}">POS</a></li>
+                <li><a href="{{route('sale.pos')}}">{{trans('file.POS')}}</a></li>
                 <li id="sale-create-menu"><a href="{{route('sales.create')}}">{{trans('file.Add Sale')}}</a></li>
                 <li id="sale-import-menu"><a href="{{url('sales/sale_by_csv')}}">{{trans('file.Import Sale By CSV')}}</a></li>
                 @endif
@@ -298,7 +298,7 @@
                     ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                     ->where([
                         ['permissions.name', 'expenses-index'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                     ])->first();
             ?>
             @if($index_permission_active)
@@ -311,7 +311,7 @@
                         ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                         ->where([
                             ['permissions.name', 'expenses-add'],
-                            ['role_id', $role->id] 
+                            ['role_id', $role->id]
                         ])->first();
                 ?>
                 @if($add_permission_active)
@@ -325,7 +325,7 @@
                     ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                     ->where([
                         ['permissions.name', 'quotes-index'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                     ])->first();
             ?>
             @if($index_permission_active)
@@ -337,7 +337,7 @@
                         ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                         ->where([
                             ['permissions.name', 'quotes-add'],
-                            ['role_id', $role->id] 
+                            ['role_id', $role->id]
                         ])->first();
                 ?>
                 @if($add_permission_active)
@@ -351,7 +351,7 @@
                     ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                     ->where([
                         ['permissions.name', 'transfers-index'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                     ])->first();
             ?>
             @if($index_permission_active)
@@ -363,7 +363,7 @@
                         ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                         ->where([
                             ['permissions.name', 'transfers-add'],
-                            ['role_id', $role->id] 
+                            ['role_id', $role->id]
                         ])->first();
                 ?>
                 @if($add_permission_active)
@@ -379,14 +379,14 @@
                     ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                     ->where([
                         ['permissions.name', 'returns-index'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                     ])->first();
 
                 $purchase_return_index_permission_active = DB::table('permissions')
                     ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                     ->where([
                         ['permissions.name', 'purchase-return-index'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                     ])->first();
             ?>
             @if($sale_return_index_permission_active || $purchase_return_index_permission_active)
@@ -406,28 +406,28 @@
                     ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                     ->where([
                         ['permissions.name', 'account-index'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                     ])->first();
 
                 $money_transfer_permission_active = DB::table('permissions')
                     ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                     ->where([
                         ['permissions.name', 'money-transfer'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                     ])->first();
 
                 $balance_sheet_permission_active = DB::table('permissions')
                     ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                     ->where([
                         ['permissions.name', 'balance-sheet'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                     ])->first();
 
                 $account_statement_permission_active = DB::table('permissions')
                     ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                     ->where([
                         ['permissions.name', 'account-statement'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                     ])->first();
 
             ?>
@@ -455,33 +455,33 @@
                     ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                     ->where([
                         ['permissions.name', 'department'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                     ])->first();
 
                 $index_employee_active = DB::table('permissions')
                     ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                     ->where([
                         ['permissions.name', 'employees-index'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                     ])->first();
 
                 $attendance_active = DB::table('permissions')
                     ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                     ->where([
                         ['permissions.name', 'attendance'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                     ])->first();
 
                 $payroll_active = DB::table('permissions')
                     ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                     ->where([
                         ['permissions.name', 'payroll'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                     ])->first();
             ?>
 
             @if(Auth::user()->role_id != 5)
-            <li class=""><a href="#hrm" aria-expanded="false" data-toggle="collapse"> <i class="dripicons-user-group"></i><span>HRM</span></a>
+            <li class=""><a href="#hrm" aria-expanded="false" data-toggle="collapse"> <i class="dripicons-user-group"></i><span>{{trans('file.HRM')}}</span></a>
             <ul id="hrm" class="collapse list-unstyled ">
                 @if($department_active)
                 <li id="dept-menu"><a href="{{route('departments.index')}}">{{trans('file.Department')}}</a></li>
@@ -504,28 +504,28 @@
                     ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                     ->where([
                         ['permissions.name', 'users-index'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                     ])->first();
 
                 $customer_index_permission_active = DB::table('permissions')
                     ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                     ->where([
                         ['permissions.name', 'customers-index'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                     ])->first();
 
                 $biller_index_permission_active = DB::table('permissions')
                     ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                     ->where([
                         ['permissions.name', 'billers-index'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                     ])->first();
 
                 $supplier_index_permission_active = DB::table('permissions')
                     ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                     ->where([
                         ['permissions.name', 'suppliers-index'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                     ])->first();
             ?>
             @if($user_index_permission_active || $customer_index_permission_active || $biller_index_permission_active || $supplier_index_permission_active)
@@ -539,7 +539,7 @@
                         ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                         ->where([
                             ['permissions.name', 'users-add'],
-                            ['role_id', $role->id] 
+                            ['role_id', $role->id]
                         ])->first();
                 ?>
                 @if($user_add_permission_active)
@@ -554,7 +554,7 @@
                         ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                         ->where([
                             ['permissions.name', 'customers-add'],
-                            ['role_id', $role->id] 
+                            ['role_id', $role->id]
                         ])->first();
                 ?>
                 @if($customer_add_permission_active)
@@ -569,7 +569,7 @@
                         ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                         ->where([
                             ['permissions.name', 'billers-add'],
-                            ['role_id', $role->id] 
+                            ['role_id', $role->id]
                         ])->first();
                 ?>
                 @if($biller_add_permission_active)
@@ -584,7 +584,7 @@
                         ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                         ->where([
                             ['permissions.name', 'suppliers-add'],
-                            ['role_id', $role->id] 
+                            ['role_id', $role->id]
                         ])->first();
                 ?>
                 @if($supplier_add_permission_active)
@@ -600,7 +600,7 @@
                         ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                         ->where([
                         ['permissions.name', 'profit-loss'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                 ])->first();
                 $best_seller_active = DB::table('permissions')
                         ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
@@ -612,25 +612,25 @@
                         ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                         ->where([
                         ['permissions.name', 'warehouse-report'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                 ])->first();
                 $warehouse_stock_report_active = DB::table('permissions')
                         ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                         ->where([
                         ['permissions.name', 'warehouse-stock-report'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                 ])->first();
                 $product_report_active = DB::table('permissions')
                         ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                         ->where([
                         ['permissions.name', 'product-report'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                 ])->first();
                 $daily_sale_active = DB::table('permissions')
                         ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                         ->where([
                         ['permissions.name', 'daily-sale'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                 ])->first();
                 $monthly_sale_active = DB::table('permissions')
                         ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
@@ -684,13 +684,13 @@
                         ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                         ->where([
                         ['permissions.name', 'product-qty-alert'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                 ])->first();
                 $dso_report_active = DB::table('permissions')
                         ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                         ->where([
                         ['permissions.name', 'dso-report'],
-                        ['role_id', $role->id] 
+                        ['role_id', $role->id]
                 ])->first();
                 $user_report_active = DB::table('permissions')
                         ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
@@ -1058,16 +1058,16 @@
                     <li id="sms-setting-menu"><a href="{{route('setting.sms')}}">{{trans('file.SMS Setting')}}</a></li>
                     @endif
                     @if($pos_setting_permission_active)
-                    <li id="pos-setting-menu"><a href="{{route('setting.pos')}}">POS {{trans('file.settings')}}</a></li>
+                    <li id="pos-setting-menu"><a href="{{route('setting.pos')}}"> {{trans('file.settings')}}</a></li>
                     @endif
                     @if($hrm_setting_permission_active)
                     <li id="hrm-setting-menu"><a href="{{route('setting.hrm')}}"> {{trans('file.HRM Setting')}}</a></li>
                     @endif
                 </ul>
             </li>
-            @if(Auth::user()->role_id != 5)
-            <li><a target="_blank" href="{{url('public/read_me')}}"> <i class="dripicons-information"></i><span>{{trans('file.Documentation')}}</span></a></li>
-            @endif
+{{--            @if(Auth::user()->role_id != 5)--}}
+{{--            <li><a target="_blank" href="{{url('public/read_me')}}"> <i class="dripicons-information"></i><span>{{trans('file.Documentation')}}</span></a></li>--}}
+{{--            @endif--}}
         </ul>
       </nav>
 
@@ -1088,7 +1088,7 @@
                 ])->first();
             ?>
             @if($sale_add_permission_active)
-            <li class="nav-item"><a class="dropdown-item btn-pos btn-sm" href="{{route('sale.pos')}}"><i class="dripicons-shopping-bag"></i><span> POS</span></a></li>
+            <li class="nav-item"><a class="dropdown-item btn-pos btn-sm" href="{{route('sale.pos')}}"><i class="dripicons-shopping-bag"></i><span> {{trans('file.POS')}}</span></a></li>
             @endif
             <li class="nav-item"><a id="switch-theme" data-toggle="tooltip" title="{{trans('file.Switch Theme')}}"><i class="dripicons-brightness-max"></i></a></li>
             <li class="nav-item"><a id="btnFullscreen" data-toggle="tooltip" title="{{trans('file.Full Screen')}}"><i class="dripicons-expand"></i></a></li>
@@ -1143,54 +1143,54 @@
                         <li>
                         <a href="{{ url('language_switch/en') }}" class="btn btn-link"> English</a>
                         </li>
-                        <li>
-                        <a href="{{ url('language_switch/es') }}" class="btn btn-link"> Español</a>
-                        </li>
+{{--                        <li>--}}
+{{--                        <a href="{{ url('language_switch/es') }}" class="btn btn-link"> Español</a>--}}
+{{--                        </li>--}}
                         <li>
                         <a href="{{ url('language_switch/ar') }}" class="btn btn-link"> عربى</a>
                         </li>
-                        <li>
-                        <a href="{{ url('language_switch/s_chinese') }}" class="btn btn-link">中国人</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/t_chinese') }}" class="btn btn-link">中國人</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/pt_BR') }}" class="btn btn-link"> Portuguese</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/fr') }}" class="btn btn-link"> Français</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/de') }}" class="btn btn-link"> Deutsche</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/id') }}" class="btn btn-link"> Malay</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/hi') }}" class="btn btn-link"> हिंदी</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/vi') }}" class="btn btn-link"> Tiếng Việt</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/ru') }}" class="btn btn-link"> русский</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/bg') }}" class="btn btn-link"> български</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/tr') }}" class="btn btn-link"> Türk</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/it') }}" class="btn btn-link"> Italiano</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/nl') }}" class="btn btn-link"> Nederlands</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/lao') }}" class="btn btn-link"> Lao</a>
-                        </li>
+{{--                        <li>--}}
+{{--                        <a href="{{ url('language_switch/s_chinese') }}" class="btn btn-link">中国人</a>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                        <a href="{{ url('language_switch/t_chinese') }}" class="btn btn-link">中國人</a>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                        <a href="{{ url('language_switch/pt_BR') }}" class="btn btn-link"> Portuguese</a>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                        <a href="{{ url('language_switch/fr') }}" class="btn btn-link"> Français</a>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                        <a href="{{ url('language_switch/de') }}" class="btn btn-link"> Deutsche</a>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                        <a href="{{ url('language_switch/id') }}" class="btn btn-link"> Malay</a>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                        <a href="{{ url('language_switch/hi') }}" class="btn btn-link"> हिंदी</a>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                        <a href="{{ url('language_switch/vi') }}" class="btn btn-link"> Tiếng Việt</a>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                        <a href="{{ url('language_switch/ru') }}" class="btn btn-link"> русский</a>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                        <a href="{{ url('language_switch/bg') }}" class="btn btn-link"> български</a>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                        <a href="{{ url('language_switch/tr') }}" class="btn btn-link"> Türk</a>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                        <a href="{{ url('language_switch/it') }}" class="btn btn-link"> Italiano</a>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                        <a href="{{ url('language_switch/nl') }}" class="btn btn-link"> Nederlands</a>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                        <a href="{{ url('language_switch/lao') }}" class="btn btn-link"> Lao</a>--}}
+{{--                        </li>--}}
                     </ul>
             </li>
             <li class="nav-item">
@@ -1448,7 +1448,7 @@
                 <div class="modal-body">
                   <p class="italic"><small>{{trans('file.The field labels marked with * are required input fields')}}.</small></p>
                     {!! Form::open(['route' => 'report.warehouse', 'method' => 'post']) !!}
-                    
+
                       <div class="form-group">
                           <label>{{trans('file.Warehouse')}} *</label>
                           <select name="warehouse_id" class="selectpicker form-control" required data-live-search="true" id="warehouse-id" data-live-search-style="begins" title="Select warehouse...">
@@ -1749,7 +1749,7 @@
       if ($(window).outerWidth() > 1199) {
           $('nav.side-navbar').removeClass('shrink');
       }
-      
+
       function myFunction() {
           setTimeout(showPage, 100);
       }

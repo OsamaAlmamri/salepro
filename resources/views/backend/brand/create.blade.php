@@ -20,7 +20,7 @@
         <button class="btn btn-primary" data-toggle="modal" data-target="#importBrand"><i class="dripicons-copy"></i> {{trans('file.Import Brand')}}</button>
     </div>
     <div class="table-responsive">
-        <table id="biller-table" class="table">
+        <table id="biller-table"                                    class="table">
             <thead>
                 <tr>
                     <th class="not-exported"></th>
@@ -251,14 +251,25 @@
         dom: '<"row"lfB>rtip',
         buttons: [
             {
-                extend: 'pdf',
+                extend: 'pdfHtml5',
                 text: '<i title="export to pdf" class="fa fa-file-pdf-o"></i>',
                 exportOptions: {
+                    orthogonal: "myExport",
+
                     columns: ':visible:Not(.not-exported)',
+                    // columns: columns.reverse(),
                     rows: ':visible',
                     stripHtml: false
                 },
                 customize: function(doc) {
+
+                    doc.styles.message.alignment = "right";
+                    doc.styles.tableBodyEven.alignment = "center";
+                    doc.styles.tableBodyOdd.alignment = "center";
+                    doc.styles.tableFooter.alignment = "center";
+                    doc.styles.tableHeader.dir = "rtl";
+                    doc.styles.tableHeader.alignment = "center";
+
                     for (var i = 1; i < doc.content[1].table.body.length; i++) {
                         if (doc.content[1].table.body[i][0].text.indexOf('<img src=') !== -1) {
                             var imagehtml = doc.content[1].table.body[i][0].text;
@@ -359,7 +370,18 @@
                 columns: ':gt(0)'
             },
         ],
-    } );
+        columnDefs: [
+            {
+                targets: 0,
+                render: function(data, type, row) {
+                    if (type === 'myExport') {
+                        return data.split(' ').reverse().join(' ');
+                    }
 
+                    return data;
+                }
+            }
+        ]
+    });
 </script>
 @endpush
