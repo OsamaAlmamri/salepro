@@ -92,14 +92,14 @@ class UnitController extends Controller
     }
 
     public function importUnit(Request $request)
-    {  
+    {
         //get file
         $filename =  $request->file->getClientOriginalName();
         $upload=$request->file('file');
         $filePath=$upload->getRealPath();
         //open and read
         $file=fopen($filePath, 'r');
-        $header= fgetcsv($file);
+        $header= fgetcsv($file,Null,";");
         $escapedHeader=[];
         //validate
         foreach ($header as $key => $value) {
@@ -109,7 +109,7 @@ class UnitController extends Controller
         }
         //looping through othe columns
         $lims_unit_data = [];
-        while($columns=fgetcsv($file))
+        while($columns=fgetcsv($file,Null,";"))
         {
             if($columns[0]=="")
                 continue;
@@ -133,12 +133,12 @@ class UnitController extends Controller
                 $unit->operator = $data['operator'];
             if($data['operationvalue'] == null)
                 $unit->operation_value = 1;
-            else 
+            else
                 $unit->operation_value = $data['operationvalue'];
             $unit->save();
         }
         return redirect('unit')->with('message', 'Unit imported successfully');
-        
+
     }
 
     public function deleteBySelection(Request $request)

@@ -81,7 +81,7 @@ class ExpenseCategoryController extends Controller
         $filePath=$upload->getRealPath();
         //open and read
         $file=fopen($filePath, 'r');
-        $header= fgetcsv($file);
+        $header= fgetcsv($file,Null,";");
         $escapedHeader=[];
         //validate
         foreach ($header as $key => $value) {
@@ -90,7 +90,7 @@ class ExpenseCategoryController extends Controller
             array_push($escapedHeader, $escapedItem);
         }
         //looping through othe columns
-        while($columns=fgetcsv($file))
+        while($columns=fgetcsv($file,Null,";"))
         {
             if($columns[0]=="")
                 continue;

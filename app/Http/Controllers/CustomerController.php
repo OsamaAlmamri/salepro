@@ -161,7 +161,7 @@ class CustomerController extends Controller
             Supplier::create($lims_customer_data);
             $message .= ' and Supplier';
         }
-        
+
         if($lims_customer_data['email']) {
             try{
                 Mail::send( 'mail.customer_create', $lims_customer_data, function( $message ) use ($lims_customer_data)
@@ -171,7 +171,7 @@ class CustomerController extends Controller
             }
             catch(\Exception $e){
                 $message .= ' created successfully. Please setup your <a href="setting/mail_setting">mail setting</a> to send mail.';
-            }   
+            }
         }
         else
             $message .= ' created successfully!';
@@ -238,7 +238,7 @@ class CustomerController extends Controller
         else {
             $message = 'Customer updated successfully';
         }
-        
+
         $input['name'] = $input['customer_name'];
         $lims_customer_data->update($input);
         return redirect('customer')->with('edit_message', $message);
@@ -256,7 +256,7 @@ class CustomerController extends Controller
             $filePath=$upload->getRealPath();
             //open and read
             $file=fopen($filePath, 'r');
-            $header= fgetcsv($file);
+            $header= fgetcsv($file,Null,";");
             $escapedHeader=[];
             //validate
             foreach ($header as $key => $value) {
@@ -265,7 +265,7 @@ class CustomerController extends Controller
                 array_push($escapedHeader, $escapedItem);
             }
             //looping through othe columns
-            while($columns=fgetcsv($file))
+            while($columns=fgetcsv($file,Null,";"))
             {
                 if($columns[0]=="")
                     continue;

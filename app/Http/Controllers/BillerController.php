@@ -70,7 +70,7 @@ class BillerController extends Controller
                 })->save('public/images/biller/' . $imageName.'-resize.'.$ext);*/
             $imageName = $imageName . '.' . $ext;
             $image->move('public/images/biller', $imageName);
-            
+
             $lims_biller_data['image'] = $imageName;
         }
         Biller::create($lims_biller_data);
@@ -83,7 +83,7 @@ class BillerController extends Controller
         }
         catch(\Exception $e){
             $message = 'Data inserted successfully. Please setup your <a href="setting/mail_setting">mail setting</a> to send mail.';
-        }  
+        }
         return redirect('biller')->with('message', $message);
     }
 
@@ -143,7 +143,7 @@ class BillerController extends Controller
         $filePath=$upload->getRealPath();
         //open and read
         $file=fopen($filePath, 'r');
-        $header= fgetcsv($file);
+        $header= fgetcsv($file,Null,";");
         $escapedHeader=[];
         //validate
         foreach ($header as $key => $value) {
@@ -152,7 +152,7 @@ class BillerController extends Controller
             array_push($escapedHeader, $escapedItem);
         }
         //looping through othe columns
-        while($columns=fgetcsv($file))
+        while($columns=fgetcsv($file,Null,";"))
         {
             if($columns[0]=="")
                 continue;
@@ -188,7 +188,7 @@ class BillerController extends Controller
             }
         }
         return redirect('biller')->with('message', $message);
-        
+
     }
 
     public function deleteBySelection(Request $request)

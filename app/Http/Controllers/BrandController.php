@@ -86,7 +86,7 @@ class BrandController extends Controller
         $filePath=$upload->getRealPath();
         //open and read
         $file=fopen($filePath, 'r');
-        $header= fgetcsv($file);
+        $header= fgetcsv($file,Null,";");
         $escapedHeader=[];
         //validate
         foreach ($header as $key => $value) {
@@ -95,7 +95,7 @@ class BrandController extends Controller
             array_push($escapedHeader, $escapedItem);
         }
         //looping through othe columns
-        while($columns=fgetcsv($file))
+        while($columns=fgetcsv($file,Null,";"))
         {
             if($columns[0]=="")
                 continue;
@@ -129,7 +129,7 @@ class BrandController extends Controller
         $lims_brand_data = Brand::findOrFail($id);
         $lims_brand_data->is_active = false;
         if($lims_brand_data->image && file_exists('public/images/brand/'.$lims_brand_data->image)) {
-           unlink('public/images/brand/'.$lims_brand_data->image); 
+           unlink('public/images/brand/'.$lims_brand_data->image);
         }
         $lims_brand_data->save();
         return redirect('brand')->with('not_permitted', 'Brand deleted successfully!');
@@ -143,15 +143,15 @@ class BrandController extends Controller
             if($brand > 0) {
                 $data = Brand::where('id', $brand)->first();
                 $csvData[]=$data->title.','.$data->image;
-            }   
-        }        
+            }
+        }
         $filename=date('Y-m-d').".csv";
         $file_path=public_path().'/downloads/'.$filename;
-        $file_url=url('/').'/downloads/'.$filename;   
+        $file_url=url('/').'/downloads/'.$filename;
         $file = fopen($file_path,"w+");
         foreach ($csvData as $exp_data){
           fputcsv($file,explode(',',$exp_data));
-        }   
+        }
         fclose($file);
         return $file_url;
     }

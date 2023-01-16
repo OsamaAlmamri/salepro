@@ -1457,7 +1457,7 @@ class SaleController extends Controller
         $i = 0;
         //validate the file
         while (!feof($file_handle) ) {
-            $current_line = fgetcsv($file_handle);
+            $current_line = fgetcsv($file_handle,null,";");
             if($current_line && $i > 0){
                 $product_data[] = Product::where('code', $current_line[0])->first();
                 if(!$product_data[$i-1])

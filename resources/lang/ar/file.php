@@ -250,7 +250,7 @@ return [
     "Add Purchase" => "أضف عملية شراء",
     "Import Purchase By CSV" => "استيراد المشتريات بواسطة CSV",
     "Sale List" => "قائمة المبيعات",
-    "Import Sale By CSV" => "استيراد بيع من جانب CSV",
+    "Import Sale By CSV" => "استيراد بيع من ملف CSV",
     "Gift Card List" => "قائمة بطاقات الهدايا",
     "Coupon List" => "قائمة الكوبونات",
     "Delivery List" => "قائمة الطلبيات",

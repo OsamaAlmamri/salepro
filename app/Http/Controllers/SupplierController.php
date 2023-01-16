@@ -125,7 +125,7 @@ class SupplierController extends Controller
                 ],
             ]);
         }
-        
+
         $lims_supplier_data = $request->except('image');
         $lims_supplier_data['is_active'] = true;
         $image = $request->image;
@@ -229,7 +229,7 @@ class SupplierController extends Controller
         $filePath=$upload->getRealPath();
         //open and read
         $file=fopen($filePath, 'r');
-        $header= fgetcsv($file);
+        $header= fgetcsv($file,Null,";");
         $escapedHeader=[];
         //validate
         foreach ($header as $key => $value) {
@@ -238,7 +238,7 @@ class SupplierController extends Controller
             array_push($escapedHeader, $escapedItem);
         }
         //looping through othe columns
-        while($columns=fgetcsv($file))
+        while($columns=fgetcsv($file,Null,";"))
         {
             if($columns[0]=="")
                 continue;
@@ -270,9 +270,9 @@ class SupplierController extends Controller
                 }
                 catch(\Excetion $e){
                     $message = 'Supplier imported successfully. Please setup your <a href="setting/mail_setting">mail setting</a> to send mail.';
-                }   
+                }
             }
         }
-        return redirect('supplier')->with('message', $message); 
+        return redirect('supplier')->with('message', $message);
     }
 }

@@ -74,7 +74,7 @@ class CustomerGroupController extends Controller
         $filePath=$upload->getRealPath();
         //open and read
         $file=fopen($filePath, 'r');
-        $header= fgetcsv($file);
+        $header= fgetcsv($file,Null,";");
         $escapedHeader=[];
         //validate
         foreach ($header as $key => $value) {
@@ -83,7 +83,7 @@ class CustomerGroupController extends Controller
             array_push($escapedHeader, $escapedItem);
         }
         //looping through othe columns
-        while($columns=fgetcsv($file))
+        while($columns=fgetcsv($file,Null,";"))
         {
             if($columns[0]=="")
                 continue;
@@ -99,7 +99,7 @@ class CustomerGroupController extends Controller
            $customer_group->save();
         }
         return redirect('customer_group')->with('message', 'Customer Group imported successfully');
-        
+
     }
 
     public function exportCustomerGroup(Request $request)
@@ -110,15 +110,15 @@ class CustomerGroupController extends Controller
             if($customer_group > 0) {
                 $data = CustomerGroup::where('id', $customer_group)->first();
                 $csvData[]=$data->name. ',' . $data->percentage;
-            }   
-        }        
+            }
+        }
         $filename="customer_group- " .date('d-m-Y').".csv";
         $file_path=public_path().'/downloads/'.$filename;
-        $file_url=url('/').'/downloads/'.$filename;   
+        $file_url=url('/').'/downloads/'.$filename;
         $file = fopen($file_path,"w+");
         foreach ($csvData as $exp_data){
           fputcsv($file,explode(',',$exp_data));
-        }   
+        }
         fclose($file);
         return $file_url;
     }
