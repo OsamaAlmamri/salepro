@@ -1089,6 +1089,9 @@ class SaleController extends Controller
             $lims_brand_list = Brand::where('is_active',true)->get();
             $lims_category_list = Category::where('is_active',true)->get();
 
+            $reference_no=Sale::all()->last()?->reference_no??0;
+            $reference_no++;
+
             if(Auth::user()->role_id > 2 && config('staff_access') == 'own') {
                 $recent_sale = Sale::where([
                     ['sale_status', 1],
@@ -1106,7 +1109,7 @@ class SaleController extends Controller
             $lims_coupon_list = Coupon::where('is_active',true)->get();
             $flag = 0;
 
-            return view('backend.sale.pos', compact('all_permission', 'lims_customer_list', 'lims_customer_group_all', 'lims_warehouse_list', 'lims_reward_point_setting_data', 'lims_product_list', 'product_number', 'lims_tax_list', 'lims_biller_list', 'lims_pos_setting_data', 'lims_brand_list', 'lims_category_list', 'recent_sale', 'recent_draft', 'lims_coupon_list', 'flag'));
+            return view('backend.sale.pos', compact('reference_no','all_permission', 'lims_customer_list', 'lims_customer_group_all', 'lims_warehouse_list', 'lims_reward_point_setting_data', 'lims_product_list', 'product_number', 'lims_tax_list', 'lims_biller_list', 'lims_pos_setting_data', 'lims_brand_list', 'lims_category_list', 'recent_sale', 'recent_draft', 'lims_coupon_list', 'flag'));
         }
         else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');

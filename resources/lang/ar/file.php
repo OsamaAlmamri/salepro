@@ -186,7 +186,7 @@ return [
     "In Words" => "المبلغ كتابة",
     "Stamp" => "الختم",
     "Signature" => "التوقيع",
-    "Developed" => "المتقدمة",
+    "Developed" => "طور",
     "Attach File" => "أرفق ملف",
     "File Link" => "رابط الملف",
     "Delivery" => "توصيل",

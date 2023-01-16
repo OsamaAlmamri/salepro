@@ -493,7 +493,7 @@
                                     ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                                     ->where([
                                     ['permissions.name', 'dso-report'],
-                                    ['role_id', $role->id] 
+                                    ['role_id', $role->id]
                             ])->first();
             $user_report_active = DB::table('permissions')
                 ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
@@ -855,12 +855,13 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                       <div class="form-group">
-                                          <input type="text" name="created_at" class="form-control date" placeholder="Choose date" onkeyup='saveValue(this);'/>
+                                          <input type="date" name="created_at" class="form-control" placeholder="Choose date" onkeyup='saveValue(this);'/>
                                       </div>
                                     </div>
                                     <div class="col-md-4">
                                       <div class="form-group">
-                                          <input type="text" id="reference-no" name="reference_no" class="form-control" placeholder="Type reference number" onkeyup='saveValue(this);'/>
+                                          {{$reference_no}}
+                                          <input type="text" id="reference-no" value="{{$reference_no}}" name="reference_no" class="form-control" placeholder="Type reference number" onkeyup='saveValue(this);'/>
                                       </div>
                                       @if($errors->has('reference_no'))
                                        <span>
@@ -1964,7 +1965,7 @@ var localStorageTempUnitName = [];
 var localStorageSaleUnitOperator = [];
 var localStorageSaleUnitOperationValue = [];
 
-$("#reference-no").val(getSavedValue("reference-no"));
+// $("#reference-no").val(getSavedValue("reference-no"));
 $("#order-discount").val(getSavedValue("order-discount"));
 $("#order-discount-val").val(getSavedValue("order-discount-val"));
 $("#order-discount-type").val(getSavedValue("order-discount-type"));
@@ -3187,7 +3188,7 @@ function checkQuantity(sale_qty, flag) {
                 localStorageQty[rowindex] = sale_qty;
                 localStorage.setItem("localStorageQty", localStorageQty);
                 checkQuantity(sale_qty, true);
-            } 
+            }
             else {
                 localStorageQty[rowindex] = sale_qty;
                 localStorage.setItem("localStorageQty", localStorageQty);
