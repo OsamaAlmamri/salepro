@@ -11,6 +11,7 @@
 
     <style type="text/css">
         * {
+            direction: rtl;
             font-size: 14px;
             line-height: 24px;
             font-family: 'Ubuntu', sans-serif;
