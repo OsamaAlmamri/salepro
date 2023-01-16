@@ -214,7 +214,7 @@ return [
     "Mail From Name" => "البريد من (الاسم)",
     "Mail Address" => "عنوان البريد",
     "Encryption" => "التشفير",
-    "Recent Transaction" => "العملية الأخيرة",
+    "Recent Transaction" => "العمليات الأخيرة",
     "Today" => "اليوم",
     "Last 7 Days" => "اخر 7 ايام",
     "This Month" => "هذا الشهر",
@@ -222,7 +222,7 @@ return [
     "Cash in Hand" => "نقد في اليد",
     "In Hand" => "فى اليد",
     "Summary Report" => "تقرير ملخص",
-    "Draft" => "مشروع",
+    "Draft" => "مسودة",
     "Coupon" => "كوبون",
     "Available" => "متاح",
     "Minimum Sale" => "الحد الأدنى للبيع",
@@ -596,8 +596,8 @@ return [
     "Cash" => "نقدي",
     "PayPal" => "باي بال",
     "Points" => "نقاط",
-    "Cancel" => "يلغي",
-    "Recent transaction" => "المعاملة الأخيرة",
+    "Cancel" => "الغاء",
+    "Recent transaction" => "العمليات الأخيرة",
 
 
 

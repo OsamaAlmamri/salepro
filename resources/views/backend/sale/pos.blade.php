@@ -855,12 +855,12 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                       <div class="form-group">
-                                          <input type="date" name="created_at" class="form-control" placeholder="Choose date" onkeyup='saveValue(this);'/>
+                                          <input type="date" name="created_at" class="form-control" value="<?php print(date("Y-m-d")); ?>" placeholder="Choose date" onkeyup='saveValue(this);'/>
                                       </div>
                                     </div>
                                     <div class="col-md-4">
                                       <div class="form-group">
-                                          {{$reference_no}}
+
                                           <input type="text" id="reference-no" value="{{$reference_no}}" name="reference_no" class="form-control" placeholder="Type reference number" onkeyup='saveValue(this);'/>
                                       </div>
                                       @if($errors->has('reference_no'))
@@ -1049,11 +1049,11 @@
                         <div class="column-5">
                             <button style="background-color: #b33771" type="button" class="btn btn-custom payment-btn" data-toggle="modal" data-target="#add-payment" id="deposit-btn"><i class="fa fa-university"></i> {{trans('file.Deposit')}}</button>
                         </div>
-                        @if($lims_reward_point_setting_data->is_active)
-                        <div class="column-5">
-                            <button style="background-color: #319398" type="button" class="btn btn-custom payment-btn" data-toggle="modal" data-target="#add-payment" id="point-btn"><i class="dripicons-rocket"></i> {{trans('file.Points')}}</button>
-                        </div>
-                        @endif
+{{--                        @if($lims_reward_point_setting_data->is_active)--}}
+{{--                        <div class="column-5">--}}
+{{--                            <button style="background-color: #319398" type="button" class="btn btn-custom payment-btn" data-toggle="modal" data-target="#add-payment" id="point-btn"><i class="dripicons-rocket"></i> {{trans('file.Points')}}</button>--}}
+{{--                        </div>--}}
+{{--                        @endif--}}
                         <div class="column-5">
                             <button style="background-color: #d63031;" type="button" class="btn btn-custom" id="cancel-btn" onclick="return confirmCancel()"><i class="fa fa-close"></i> {{trans('file.Cancel')}}</button>
                         </div>
