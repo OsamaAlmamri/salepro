@@ -117,13 +117,15 @@
                                 <div class="col-md-4 form-group">
                                 	<label>{{trans('file.Valid on the following days')}}</label>
                                 	<ul style="list-style-type: none; margin-left: -30px;">
-                                		<li><input type="checkbox" class="Mon" name="days[]" value="Mon">&nbsp; Monday</li>
-                                		<li><input type="checkbox" class="Tue" name="days[]" value="Tue">&nbsp; Tuesday</li>
-                                		<li><input type="checkbox" class="Wed" name="days[]" value="Wed">&nbsp; Wednesday</li>
-                                		<li><input type="checkbox" class="Thu" name="days[]" value="Thu">&nbsp; Thursday</li>
-                                		<li><input type="checkbox" class="Fri" name="days[]" value="Fri">&nbsp; Friday</li>
-                                		<li><input type="checkbox" class="Sat" name="days[]" value="Sat">&nbsp; Saturday</li>
-                                		<li><input type="checkbox" class="Sun" name="days[]" value="Sun">&nbsp; Sunday</li>
+
+
+                                        <li><input type="checkbox" name="days[]" value="Sat" checked>&nbsp; {{trans('file.Sat')}}</li>
+                                        <li><input type="checkbox" name="days[]" value="Sun" checked>&nbsp; {{trans('file.Sun')}}</li>
+                                        <li><input type="checkbox" name="days[]" value="Mon" checked>&nbsp; {{trans('file.Mon')}}</li>
+                                        <li><input type="checkbox" name="days[]" value="Tue" checked>&nbsp; {{trans('file.Tue')}}</li>
+                                        <li><input type="checkbox" name="days[]" value="Wed" checked>&nbsp; {{trans('file.Wed')}}</li>
+                                        <li><input type="checkbox" name="days[]" value="Thu" checked>&nbsp; {{trans('file.Thu')}}</li>
+                                        <li><input type="checkbox" name="days[]" value="Fri" checked>&nbsp; {{trans('file.Fri')}}</li>
                                 	</ul>
                                 </div>
                                 <div class="col-md-12 mt-2">
